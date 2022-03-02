@@ -17,7 +17,7 @@ function debugout() {
 	self.autoTrim = true; // to avoid the log eating up potentially endless memory
 	self.maxLines = 2500; // if autoTrim is true, this many most recent lines are saved
 	self.tailNumLines = 100; // how many lines tail() will retrieve
-	self.logFilename = 'log.txt'; // filename of log downloaded with downloadLog()
+	self.logFilename = 'debugout.txt'; // filename of log downloaded with downloadLog()
 	self.maxDepth = 25; // max recursion depth for logged objects
 
 	// vars
@@ -82,17 +82,16 @@ function debugout() {
 	}
 	// immediately downloads the log - for desktop browser use
 	this.downloadLog = function() {
-	    var file = "data:text/plain;charset=utf-8,";
 	    var logFile = self.getLog();
-	    var encoded = encodeURIComponent(logFile);
-	    file += encoded;
-	    var a = document.createElement('a');
-	    a.href = file;
-	    a.target   = '_blank';
-	    a.download = self.logFilename;
-	    document.body.appendChild(a);
-	    a.click();
-	    a.remove();
+            var blob = new Blob([logFile], { type: 'data:text/plain;charset=utf-8' });
+            var a = document.createElement('a');
+            a.href = window.URL.createObjectURL(blob);
+            a.target = '_blank';
+            a.download = self.logFilename;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(a.href);
 	}
 	// clears the log
 	this.clear = function() {
@@ -123,7 +122,7 @@ function debugout() {
 				var logTime = new Date();
 				self.output += self.formatTimestamp(logTime);
 			}
-			self.output += addition;
+			self.output += addition+'\n';
 			if (self.autoTrim) self.output = self.trimLog(self.output, self.maxLines);
 			// local storage
 			if (self.useLocalStorage) {
