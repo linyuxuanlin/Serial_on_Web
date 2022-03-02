@@ -1,10 +1,3 @@
-/*
-
-    debugout.js
-    by @inorganik
-    
-*/
-
 // save all the console.logs
 function debugout() {
 	var self = this;
