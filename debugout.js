@@ -123,7 +123,7 @@ function debugout() {
 				var logTime = new Date();
 				self.output += self.formatTimestamp(logTime);
 			}
-			self.output += addition+'\n';
+			self.output += addition;
 			if (self.autoTrim) self.output = self.trimLog(self.output, self.maxLines);
 			// local storage
 			if (self.useLocalStorage) {
