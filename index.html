@@ -14,7 +14,7 @@
 <b>网页版串口助手</b>
 <br>
 
-Serial port speed: 
+串口波特率选择: 
 <select name="speed" id="SerialSpeed">
   <option value="115200">115200</option>
   <option value="1200">1200</option>
@@ -78,7 +78,7 @@ if ('serial' in navigator) {
       term.write('\x1b[31mDisconnected from Serial Port\x1b[m\r\n');
       port.close();
       port = undefined;
-      connectButton.innerText = 'Connect';
+      connectButton.innerText = '连接';
 
       document.getElementById('SerialSpeed').disabled = false;
 
