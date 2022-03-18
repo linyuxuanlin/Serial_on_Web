@@ -11,7 +11,7 @@
 
 <div style="display:inline-block; vertical-align:top;">
 
-<b>PCU</b>
+<b>网页版串口助手</b>
 <br>
 
 Serial port speed: 
@@ -129,7 +129,7 @@ async function getReader() {
 	document.getElementById('SerialSpeed').disabled = true;
 
         connectButton.innerText = 'Disconnect';
-        term.write('\x1b[31mWelcome to PCU !\x1b[m\r\n');
+        term.write('\x1b[31mWelcome to Serial_on_Web !\x1b[m\r\n');
 
         const appendStream = new WritableStream({
           write(chunk) {
