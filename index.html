@@ -26,7 +26,7 @@
   <option value="57600">57600</option>
   
 </select>
-<button id="SerialConnectButton" type="button" disabled>Connect</button>
+<button id="SerialConnectButton" type="button" disabled>连接</button>
 <button onclick="bugout.downloadLog();">下载日志</button>
 <div id="term">
 </div>
@@ -84,7 +84,7 @@ if ('serial' in navigator) {
 
     }
     else {
-      connectButton.innerText = 'Disconnect';
+      connectButton.innerText = '断开';
       getReader();
     }
   }
